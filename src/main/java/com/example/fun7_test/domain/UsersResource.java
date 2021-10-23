@@ -12,8 +12,7 @@ import javax.ws.rs.Produces;
 public class UsersResource {
     @GET
     @Produces("application/json")
-    public String check(@PathParam("userId")String userId, @PathParam("timezone")String timezone, @PathParam("cc")String cc)
-    {
+    public String check(@PathParam("userId")String userId, @PathParam("timezone")String timezone, @PathParam("cc")String cc) throws Exception {
         JSONObject jo = new JSONObject();
         jo.put("multiplayer", this.CheckMultiplyer(userId));
         jo.put("user-support", this.CheckUserSupport(userId));
@@ -21,18 +20,55 @@ public class UsersResource {
         return jo.toString();
     }
 
-    private boolean CheckMultiplyer(String userId)
-    {
+    private boolean CheckMultiplyer(String userId) throws Exception {
+
+        if(userId.isEmpty())
+        {
+            return false;
+        }
+        try
+        {
+
+        }
+        catch (Exception error)
+        {
+            throw new Exception();
+        }
         return false;
     }
 
-    private boolean CheckUserSupport(String userId)
-    {
+    private boolean CheckUserSupport(String userId) throws Exception {
+
+        if(userId.isEmpty())
+        {
+            return false;
+        }
+        try
+        {
+
+        }
+        catch (Exception error)
+        {
+            throw new Exception();
+        }
         return false;
     }
 
-    private boolean CheckADS(String userId)
-    {
+    private boolean CheckADS(String userId) throws Exception {
+
+        if(userId.isEmpty())
+        {
+            return false;
+        }
+        try
+        {
+
+        }
+        catch (Exception error)
+        {
+            throw new Exception();
+        }
+
         return false;
     }
 }
