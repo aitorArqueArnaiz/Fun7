@@ -10,21 +10,14 @@ import javax.ws.rs.Produces;
 
 @Path("/check-services/{userId}/{timezone}/{cc}")
 public class UsersResource {
-    @PathParam("userId")
-    private String userId;
-    @PathParam("timezone")
-    private String timezone;
-    @PathParam("cc")
-    private String cc;
-
     @GET
     @Produces("application/json")
-    public JSONObject services()
+    public String check(@PathParam("userId")String userId, @PathParam("timezone")String timezone, @PathParam("cc")String cc)
     {
         JSONObject jo = new JSONObject();
         jo.put("name", "jon doe");
         jo.put("age", "22");
         jo.put("city", "chicago");
-        return jo;
+        return jo.toString();
     }
 }
