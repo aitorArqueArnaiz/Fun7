@@ -32,7 +32,7 @@ public class UsersResource {
         }
         catch (Exception error)
         {
-            throw new Exception();
+            throw new Exception("Error during check the multiplayer feature. Error message : " +  error.getMessage());
         }
         return false;
     }
@@ -49,7 +49,7 @@ public class UsersResource {
         }
         catch (Exception error)
         {
-            throw new Exception();
+            throw new Exception("Error during check the support feature. Error message : " +  error.getMessage());
         }
         return false;
     }
@@ -66,7 +66,7 @@ public class UsersResource {
         }
         catch (Exception error)
         {
-            throw new Exception();
+            throw new Exception("Error during check the ads feature. Error message : " +  error.getMessage());
         }
 
         return false;
