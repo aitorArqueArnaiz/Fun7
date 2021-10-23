@@ -17,3 +17,7 @@ Technologies used :
     - JAVA JDK : corretto-1.8.0_312
     - Glass Fish server 4.1.1
     - Developement UI : IntelliJ
+
+Operating system :
+
+    - Windows 10 with JAvA runtime, glassfish 4..1 and JAVA jdk 1.8
