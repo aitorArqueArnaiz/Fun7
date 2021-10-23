@@ -1,4 +1,4 @@
-package com.example.fun7_test;
+package com.example.fun7_test.domain;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -1,4 +1,4 @@
-package com.example.fun7_test;
+package com.example.fun7_test.application;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
