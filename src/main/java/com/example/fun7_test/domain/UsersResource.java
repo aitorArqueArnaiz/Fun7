@@ -13,11 +13,11 @@ public class UsersResource {
     @GET
     @Produces("application/json")
     public String check(@PathParam("userId")String userId, @PathParam("timezone")String timezone, @PathParam("cc")String cc) throws Exception {
-        JSONObject jo = new JSONObject();
-        jo.put("multiplayer", this.CheckMultiplyer(userId));
-        jo.put("user-support", this.CheckUserSupport(userId));
-        jo.put("ads", this.CheckADS(userId));
-        return jo.toString();
+        JSONObject userServices = new JSONObject();
+        userServices.put("multiplayer", this.CheckMultiplyer(userId));
+        userServices.put("user-support", this.CheckUserSupport(userId));
+        userServices.put("ads", this.CheckADS(userId));
+        return userServices.toString();
     }
 
     private boolean CheckMultiplyer(String userId) throws Exception {
