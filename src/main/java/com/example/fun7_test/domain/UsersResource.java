@@ -15,9 +15,24 @@ public class UsersResource {
     public String check(@PathParam("userId")String userId, @PathParam("timezone")String timezone, @PathParam("cc")String cc)
     {
         JSONObject jo = new JSONObject();
-        jo.put("name", "jon doe");
-        jo.put("age", "22");
-        jo.put("city", "chicago");
+        jo.put("multiplayer", this.CheckMultiplyer(userId));
+        jo.put("user-support", this.CheckUserSupport(userId));
+        jo.put("ads", this.CheckADS(userId));
         return jo.toString();
+    }
+
+    private boolean CheckMultiplyer(String userId)
+    {
+        return false;
+    }
+
+    private boolean CheckUserSupport(String userId)
+    {
+        return false;
+    }
+
+    private boolean CheckADS(String userId)
+    {
+        return false;
     }
 }
