@@ -2,37 +2,29 @@ import com.example.fun7_test.domain.entities.User;
 import com.example.fun7_test.infrastructure.EntityManager;
 import org.junit.Test;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
 public class Fun7Test
 {
     @Test
     public void AddUser_Test()
     {
-        EntityManagerFactory emf = null;
-        EntityManager entityManager = null;
-        EntityTransaction transaction = null;
+        EntityManager entityManager = new EntityManager();
 
         try
         {
-            emf = Persistence.createEntityManagerFactory("User");
-            entityManager = (EntityManager) emf.createEntityManager();
-            transaction = ((javax.persistence.EntityManager) entityManager).getTransaction();
-            transaction.begin();
+            entityManager = (EntityManager) entityManager.GetEntityFactory().createEntityManager();
+            entityManager.GetTransaction().begin();
             User student = new User();
             ((javax.persistence.EntityManager) entityManager).persist(student);
-            transaction.commit();
+            entityManager.GetTransaction().commit();
         }
         catch (Exception e)
         {
-            transaction.rollback();
+            entityManager.GetTransaction().rollback();
         }
         finally
         {
             entityManager.close();
-            emf.close();
+            entityManager.GetEntityFactory().close();
         }
     }
 }
