@@ -1,7 +1,10 @@
 package com.example.fun7_test.infrastructure;
 
 import com.example.fun7_test.domain.entities.User;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepository
 {
@@ -47,24 +50,38 @@ public class UserRepository
         }
     }
 
-    public boolean List() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
+    public List<User> List() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
     {
+        ArrayList result = new ArrayList(){};
         try
         {
             String listUsersQuery = this.ListAllUsersQueryString();
             Statement stmt = getConnection().createStatement();
-            stmt.execute(listUsersQuery);
-            return true;
+            ResultSet rs = stmt.executeQuery(listUsersQuery);
+
+            while (rs.next())
+            {
+                User user = new User();
+                user.Name = rs.getString("Name");
+                user.multiplayer = rs.getBoolean("multiplayer");
+                user.support = rs.getBoolean("support");
+                user.asd = rs.getBoolean ("asd");
+                user.timezone = rs.getString("timezone");
+                user.cc = rs.getString("cc");
+                user.setSavings(rs.getDouble("savings"));
+
+                result.add(user);
+            }
         }
         catch (Exception e)
         {
             _entityManager.GetTransaction().rollback();
-            return false;
         }
         finally
         {
             closeConnection();
         }
+        return result;
     }
 
     private String CreateAddUserQueryString(User user)
