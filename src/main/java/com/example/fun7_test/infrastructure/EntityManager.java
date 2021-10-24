@@ -6,10 +6,10 @@ import javax.persistence.Persistence;
 
 public class EntityManager
 {
-    public EntityManager()
+    public EntityManager(String persistenceUnitName)
     {
         // user is the persistence unit configured in persistence.xml
-        this.entityManagerFactory = Persistence.createEntityManagerFactory("User");
+        this.entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName);
         this.entityManager = (EntityManager) entityManagerFactory.createEntityManager();
         this.transaction = ((javax.persistence.EntityManager) entityManager).getTransaction();
     }

@@ -11,7 +11,7 @@ public class UserRepository
 
     private final static String user = "root";
     private final static String password = "aA2221xT";
-    private EntityManager _entityManager = new EntityManager();
+    private EntityManager _entityManager = new EntityManager("User");
 
     public static Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException
     {

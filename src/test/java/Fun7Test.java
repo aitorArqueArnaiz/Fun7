@@ -8,7 +8,7 @@ public class Fun7Test
     public void AddUser_Test()
     {
         // Arrange
-        EntityManager entityManager = new EntityManager();
+        EntityManager entityManager = new EntityManager("User");
 
         // Act
         try
