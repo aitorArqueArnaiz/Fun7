@@ -1,17 +1,19 @@
 package com.example.fun7_test.infrastructure;
 
 import com.example.fun7_test.domain.entities.User;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UserRepository
 {
 
     private final static String user = "root";
     private final static String password = "aA2221xT";
-    private EntityManager _entityManager = new EntityManager("User");
+    private EntityManager _entityManager;
+
+    public UserRepository() throws Exception
+    {
+        //this._entityManager = new EntityManager("User");
+    }
 
     public static Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException
     {
@@ -25,13 +27,14 @@ public class UserRepository
         getConnection().close();
     }
 
-    public boolean AddUser(User user) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
+    public boolean Add(User user) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
     {
         try
         {
-            _entityManager.GetTransaction().begin();
-            ((javax.persistence.EntityManager) _entityManager).persist(user);
-            _entityManager.GetTransaction().commit();
+            String insertUserQuery = this.CreateAddUserQueryString(user);
+            Statement stmt = getConnection().createStatement();
+            stmt.execute(insertUserQuery);
+            return true;
         }
         catch (Exception e)
         {
@@ -40,10 +43,14 @@ public class UserRepository
         }
         finally
         {
-            _entityManager.GetTransaction().notify();
             closeConnection();
-            _entityManager.GetEntityFactory().close();
         }
-        return true;
+    }
+
+    private String CreateAddUserQueryString(User user)
+    {
+        return "INSERT INTO users (Name, multiplayer, support, asd, timezone, cc, savings) VALUES(" + "'" + user.Name + "'"
+                + ", " + user.multiplayer + ", " + user.support + ", " + user.asd + ", " + "'" + user.timezone + "'" + ", "
+                + "'" + user.cc + "'" + ", " + user.getSavings() + ")";
     }
 }

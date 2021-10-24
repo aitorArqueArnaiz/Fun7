@@ -9,12 +9,12 @@ public class User
 {
     public User()
     {
-        this.Name = "";
+        this.Name = "test";
         this.multiplayer = false;
         this.support = false;
         this.asd = false;
-        this.timezone = "";
-        this.cc = "";
+        this.timezone = "pacific";
+        this.cc = "EN";
         this.savings = 0.0;
     }
 
