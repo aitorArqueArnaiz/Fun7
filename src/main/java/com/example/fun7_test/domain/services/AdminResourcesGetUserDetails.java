@@ -8,14 +8,17 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 
-@Path("/admin-services/{userId}/{timezone}/{cc}")
-public class AdminResource
+@Path("/admin-services/user-details/{userId}")
+public class AdminResourcesGetUserDetails
 {
+    @PathParam("userId")
+    private String userId;
+
     @GET
     @Produces("application/json")
-    public String admin(@PathParam("userId") String userId, @PathParam("timezone") String timezone, @PathParam("cc") String cc) throws Exception {
+    public String admin()
+    {
         JSONObject userServices = new JSONObject();
         return userServices.toString();
     }
 }
-
