@@ -1,5 +1,6 @@
 import com.example.fun7_test.domain.entities.User;
 import com.example.fun7_test.infrastructure.UserRepository;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class Fun7Test
@@ -11,8 +12,9 @@ public class Fun7Test
         UserRepository userRepository = new UserRepository();
 
         // Act
-        userRepository.Add(new User());
+        boolean result = userRepository.Add(new User());
 
         // Assert
+        Assert.assertTrue(result);
     }
 }

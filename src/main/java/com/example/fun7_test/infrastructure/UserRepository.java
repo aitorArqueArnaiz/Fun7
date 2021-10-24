@@ -47,10 +47,35 @@ public class UserRepository
         }
     }
 
+    public boolean List() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
+    {
+        try
+        {
+            String listUsersQuery = this.ListAllUsersQueryString();
+            Statement stmt = getConnection().createStatement();
+            stmt.execute(listUsersQuery);
+            return true;
+        }
+        catch (Exception e)
+        {
+            _entityManager.GetTransaction().rollback();
+            return false;
+        }
+        finally
+        {
+            closeConnection();
+        }
+    }
+
     private String CreateAddUserQueryString(User user)
     {
         return "INSERT INTO users (Name, multiplayer, support, asd, timezone, cc, savings) VALUES(" + "'" + user.Name + "'"
                 + ", " + user.multiplayer + ", " + user.support + ", " + user.asd + ", " + "'" + user.timezone + "'" + ", "
                 + "'" + user.cc + "'" + ", " + user.getSavings() + ")";
+    }
+
+    private String ListAllUsersQueryString()
+    {
+        return "SELECT * FROM users.users";
     }
 }

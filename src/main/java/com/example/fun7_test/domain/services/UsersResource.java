@@ -1,6 +1,7 @@
 package com.example.fun7_test.domain.services;
 
 import org.json.simple.JSONObject;
+import com.example.fun7_test.domain.shared.utils;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,66 +10,17 @@ import javax.ws.rs.Produces;
 
 
 @Path("/check-services/{userId}/{timezone}/{cc}")
-public class UsersResource {
+public class UsersResource
+{
+    private utils ut = new utils();
+
     @GET
     @Produces("application/json")
     public String check(@PathParam("userId")String userId, @PathParam("timezone")String timezone, @PathParam("cc")String cc) throws Exception {
         JSONObject userServices = new JSONObject();
-        userServices.put("multiplayer", this.CheckMultiplyer(userId));
-        userServices.put("user-support", this.CheckUserSupport(userId));
-        userServices.put("ads", this.CheckADS(userId));
+        userServices.put("multiplayer", ut.CheckMultiplyer(userId));
+        userServices.put("user-support", ut.CheckUserSupport(userId));
+        userServices.put("ads", ut.CheckADS(userId));
         return userServices.toString();
-    }
-
-    private boolean CheckMultiplyer(String userId) throws Exception {
-
-        if(userId.isEmpty())
-        {
-            return false;
-        }
-        try
-        {
-
-        }
-        catch (Exception error)
-        {
-            throw new Exception("Error during check the multiplayer feature. Error message : " +  error.getMessage());
-        }
-        return false;
-    }
-
-    private boolean CheckUserSupport(String userId) throws Exception {
-
-        if(userId.isEmpty())
-        {
-            return false;
-        }
-        try
-        {
-
-        }
-        catch (Exception error)
-        {
-            throw new Exception("Error during check the support feature. Error message : " +  error.getMessage());
-        }
-        return false;
-    }
-
-    private boolean CheckADS(String userId) throws Exception {
-
-        if(userId.isEmpty())
-        {
-            return false;
-        }
-        try
-        {
-
-        }
-        catch (Exception error)
-        {
-            throw new Exception("Error during check the ads feature. Error message : " +  error.getMessage());
-        }
-
-        return false;
     }
 }
