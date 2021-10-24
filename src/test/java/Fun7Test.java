@@ -1,5 +1,5 @@
 import com.example.fun7_test.domain.entities.User;
-import com.example.fun7_test.domain.services.EntityManager;
+import com.example.fun7_test.infrastructure.EntityManager;
 import org.junit.Test;
 
 import javax.persistence.EntityManagerFactory;
@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 public class Fun7Test
 {
     @Test
-    public void firstTest()
+    public void AddUser_Test()
     {
         EntityManagerFactory emf = null;
         EntityManager entityManager = null;
