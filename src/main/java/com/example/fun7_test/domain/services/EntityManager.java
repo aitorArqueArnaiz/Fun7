@@ -8,6 +8,7 @@ public class EntityManager
 {
     public EntityManager()
     {
+        // user is the persistence unit configured in persistence.xml
         this.entityManagerFactory = Persistence.createEntityManagerFactory("User");
         this.entityManager = (EntityManager) entityManagerFactory.createEntityManager();
         this.transaction = entityManager.transaction;
@@ -21,4 +22,9 @@ public class EntityManager
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
     private EntityTransaction transaction;
+
+    public void close()
+    {
+        this.entityManager.close();
+    }
 }
