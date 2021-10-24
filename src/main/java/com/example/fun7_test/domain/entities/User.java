@@ -1,9 +1,7 @@
 package com.example.fun7_test.domain.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.*;
 
 @Entity
 @Table(name="USERS")
@@ -41,6 +39,8 @@ public class User
     }
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "id", nullable = false)
     private Long id;
 
