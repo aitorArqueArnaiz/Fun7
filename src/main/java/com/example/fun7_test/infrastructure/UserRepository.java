@@ -16,7 +16,7 @@ public class UserRepository
     public static Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException
     {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/User" , user, password);
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/users" , user, password);
         return connection;
     }
 

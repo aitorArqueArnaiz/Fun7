@@ -7,14 +7,16 @@ public class Fun7Test
     @Test
     public void AddUser_Test()
     {
+        // Arrange
         EntityManager entityManager = new EntityManager();
 
+        // Act
         try
         {
             entityManager = (EntityManager) entityManager.GetEntityFactory().createEntityManager();
             entityManager.GetTransaction().begin();
-            User student = new User();
-            ((javax.persistence.EntityManager) entityManager).persist(student);
+            User user = new User();
+            ((javax.persistence.EntityManager) entityManager).persist(user);
             entityManager.GetTransaction().commit();
         }
         catch (Exception e)
@@ -26,5 +28,7 @@ public class Fun7Test
             entityManager.close();
             entityManager.GetEntityFactory().close();
         }
+
+        // Assert
     }
 }
