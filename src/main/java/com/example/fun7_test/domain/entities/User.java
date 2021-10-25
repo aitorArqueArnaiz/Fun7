@@ -9,6 +9,7 @@ public class User
 {
     public User()
     {
+        this.id = 0;
         this.Name = "test";
         this.multiplayer = false;
         this.support = false;
@@ -42,7 +43,7 @@ public class User
     @GeneratedValue(strategy=GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "id", nullable = false)
-    private Long id;
+    public int id;
 
     @Column(name = "Name", nullable = false)
     public String Name;

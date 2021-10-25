@@ -32,4 +32,33 @@ public class Fun7Test
         // Assert
         Assert.assertNotNull(result);
     }
+
+    @Test
+    public void GetUserByIdUsers_Test() throws Exception
+    {
+        // Arrange
+        User user = new User();
+        UserRepository userRepository = new UserRepository();
+
+        // Act
+        User result = userRepository.Get(String.valueOf(user.id));
+
+        // Assert
+        Assert.assertNotNull(result);
+    }
+
+    @Test
+    public void DeleteUserById_Test() throws Exception
+    {
+        // Arrange
+        User user = new User();
+        user.id = 1;
+        UserRepository userRepository = new UserRepository();
+
+        // Act
+        boolean result = userRepository.Delete(String.valueOf(user.id));
+
+        // Assert
+        Assert.assertTrue(result);
+    }
 }
