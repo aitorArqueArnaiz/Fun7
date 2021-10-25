@@ -4,6 +4,7 @@ import com.example.fun7_test.domain.entities.User;
 import com.example.fun7_test.domain.shared.utils;
 import com.example.fun7_test.infrastructure.UserRepository;
 import org.json.simple.JSONObject;
+import com.google.gson.Gson;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -29,7 +30,7 @@ public class AdminResourceGetUsers
             JSONObject userServices = new JSONObject();
             for (User user:users)
             {
-                userServices.put("user : " + user.Name + " ", user);
+                userServices.put("user : " + user.Name + " ", new Gson().toJson(user));
             }
             return userServices.toString();
         }

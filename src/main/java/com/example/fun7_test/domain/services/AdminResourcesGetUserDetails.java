@@ -2,6 +2,7 @@ package com.example.fun7_test.domain.services;
 
 import com.example.fun7_test.domain.entities.User;
 import com.example.fun7_test.infrastructure.UserRepository;
+import com.google.gson.Gson;
 import org.json.simple.JSONObject;
 
 import javax.ws.rs.GET;
@@ -27,7 +28,7 @@ public class AdminResourcesGetUserDetails
             User user = userRepository.Get(userId);
 
             JSONObject userServices = new JSONObject();
-            userServices.put("user : " + user.Name + " ", user);
+            userServices.put("user : " + user.Name + " ", new Gson().toJson(user));
             return userServices.toString();
         }
         catch (Exception error)
