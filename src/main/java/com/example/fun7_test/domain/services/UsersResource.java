@@ -20,7 +20,7 @@ public class UsersResource
         JSONObject userServices = new JSONObject();
         userServices.put("multiplayer", ut.CheckMultiplyer(userId));
         userServices.put("user-support", ut.CheckUserSupport(userId));
-        userServices.put("ads", ut.CheckADS(userId));
+        userServices.put("ads", ut.CheckADS(cc));
         return userServices.toString();
     }
 }

@@ -77,5 +77,25 @@
     <orderEntry type="library" name="Maven: com.github.lbovolini:ObjectMapper:0.2.3" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.8" level="project" />
     <orderEntry type="library" name="Maven: top.jfunc.json:Json-Gson:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.marschall:jfr-resttemplate:0.2.1" level="project" />
+    <orderEntry type="library" name="Maven: com.pepegar:hammock-resttemplate_2.13:0.11.3" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.13.4" level="project" />
+    <orderEntry type="library" name="Maven: com.pepegar:hammock-core_2.13:0.11.3" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-collection-compat_2.13:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:cats-core_2.13:2.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:cats-kernel_2.13:2.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:cats-free_2.13:2.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:alleycats-core_2.13:2.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:cats-effect_2.13:2.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:simulacrum_2.13:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.julien-truffaut:monocle-core_2.13:2.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.julien-truffaut:monocle-macro_2.13:2.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: org.tpolecat:atto-core_2.13:0.8.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.2" level="project" />
+    <orderEntry type="library" name="jackson-annotations-2.13.0-rc1" level="project" />
   </component>
 </module>
