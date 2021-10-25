@@ -62,13 +62,7 @@ public class UserRepository
             while (rs.next())
             {
                 User user = new User();
-                user.Name = rs.getString("Name");
-                user.multiplayer = rs.getBoolean("multiplayer");
-                user.support = rs.getBoolean("support");
-                user.asd = rs.getBoolean ("asd");
-                user.timezone = rs.getString("timezone");
-                user.cc = rs.getString("cc");
-                user.setSavings(rs.getDouble("savings"));
+                GetUserInformation(user, rs);
 
                 result.add(user);
             }
@@ -84,6 +78,62 @@ public class UserRepository
         return result;
     }
 
+    public User Get(String userId) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
+    {
+        User result = new User();
+        try
+        {
+            String listUsersQuery = this.GetUserByIdQueryString(userId);
+            Statement stmt = getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(listUsersQuery);
+
+            while (rs.next())
+            {
+                GetUserInformation(result, rs);
+            }
+        }
+        catch (Exception e)
+        {
+            _entityManager.GetTransaction().rollback();
+        }
+        finally
+        {
+            closeConnection();
+        }
+        return result;
+    }
+
+    public boolean Delete(String userId) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
+    {
+        try
+        {
+            String listUsersQuery = this.DeleteUserQueryString(userId);
+            Statement stmt = getConnection().createStatement();
+            stmt.execute(listUsersQuery);
+        }
+        catch (Exception e)
+        {
+            _entityManager.GetTransaction().rollback();
+            return false;
+        }
+        finally
+        {
+            closeConnection();
+        }
+        return true;
+    }
+
+    private void GetUserInformation(User result, ResultSet rs) throws SQLException
+    {
+        result.Name = rs.getString("Name");
+        result.multiplayer = rs.getBoolean("multiplayer");
+        result.support = rs.getBoolean("support");
+        result.asd = rs.getBoolean ("asd");
+        result.timezone = rs.getString("timezone");
+        result.cc = rs.getString("cc");
+        result.setSavings(rs.getDouble("savings"));
+    }
+
     private String CreateAddUserQueryString(User user)
     {
         return "INSERT INTO users (Name, multiplayer, support, asd, timezone, cc, savings) VALUES(" + "'" + user.Name + "'"
@@ -94,5 +144,15 @@ public class UserRepository
     private String ListAllUsersQueryString()
     {
         return "SELECT * FROM users.users";
+    }
+
+    private String GetUserByIdQueryString(String userId)
+    {
+        return "SELECT * FROM users.users u WHERE u.id = " + userId;
+    }
+
+    private String DeleteUserQueryString(String userId)
+    {
+        return "DELETE FROM users.users u WHERE u.id = " + userId;
     }
 }

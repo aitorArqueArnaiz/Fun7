@@ -1,5 +1,7 @@
 package com.example.fun7_test.domain.services;
 
+import com.example.fun7_test.domain.entities.User;
+import com.example.fun7_test.infrastructure.UserRepository;
 import org.json.simple.JSONObject;
 
 import javax.ws.rs.GET;
@@ -16,9 +18,21 @@ public class AdminResourcesGetUserDetails
 
     @GET
     @Produces("application/json")
-    public String admin()
+    public String admin() throws Exception
     {
-        JSONObject userServices = new JSONObject();
-        return userServices.toString();
+        try
+        {
+            // Create user's repository
+            UserRepository userRepository = new UserRepository();
+            User user = userRepository.Get(userId);
+
+            JSONObject userServices = new JSONObject();
+            userServices.put("user : " + user.Name + " ", user);
+            return userServices.toString();
+        }
+        catch (Exception error)
+        {
+            throw new Exception("Error occurred during get user details operation. Error message " + error.getMessage());
+        }
     }
 }
