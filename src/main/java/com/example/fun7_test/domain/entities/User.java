@@ -2,6 +2,7 @@ package com.example.fun7_test.domain.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.TimeZone;
 
 @Entity
 @Table(name="USERS")
@@ -14,7 +15,7 @@ public class User
         this.multiplayer = false;
         this.support = false;
         this.asd = false;
-        this.timezone = "pacific";
+        this.timezone = TimeZone.getTimeZone("Europe/Moscow");
         this.cc = "EN";
         this.savings = 0.0;
     }
@@ -58,7 +59,7 @@ public class User
     public boolean asd;
 
     @Column(name = "timezone", nullable = false)
-    public String timezone;
+    public TimeZone timezone;
 
     @Column(name = "cc", nullable = false)
     public String cc;

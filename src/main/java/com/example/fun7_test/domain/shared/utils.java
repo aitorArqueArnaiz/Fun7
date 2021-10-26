@@ -2,6 +2,8 @@ package com.example.fun7_test.domain.shared;
 
 import com.example.fun7_test.infrastructure.UserRepository;
 
+import java.util.TimeZone;
+
 public class utils
 {
     public boolean CheckMultiplyer(String userId, String cc) throws Exception
@@ -24,20 +26,18 @@ public class utils
         return isMultiplayerActivated;
     }
 
-    public boolean CheckUserSupport(String timezone) throws Exception
+    public boolean CheckUserSupport(TimeZone timezone) throws Exception
     {
-        if(timezone.isEmpty())
+        if(timezone == null)
         {
             return false;
         }
         try
         {
-            if(timezone.equals("9:00 - 15:00 Ljubljana time"))
+            if(timezone.equals("Europe/Ljubljana"))
             {
                 return true;
             }
-
-            // Update user support field into data base
         }
         catch (Exception error)
         {

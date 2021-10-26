@@ -5,6 +5,7 @@ import com.example.fun7_test.domain.entities.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 
 public class UserRepository
 {
@@ -129,7 +130,7 @@ public class UserRepository
         result.multiplayer = rs.getBoolean("multiplayer");
         result.support = rs.getBoolean("support");
         result.asd = rs.getBoolean ("asd");
-        result.timezone = rs.getString("timezone");
+        result.timezone = TimeZone.getTimeZone(rs.getString("timezone"));
         result.cc = rs.getString("cc");
         result.setSavings(rs.getDouble("savings"));
     }
