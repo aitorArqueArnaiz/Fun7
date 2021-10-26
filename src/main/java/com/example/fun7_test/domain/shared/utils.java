@@ -2,6 +2,9 @@ package com.example.fun7_test.domain.shared;
 
 import com.example.fun7_test.infrastructure.UserRepository;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TimeZone;
 
 public class utils
@@ -34,7 +37,12 @@ public class utils
         }
         try
         {
-            if(timezone.equals("Europe/Ljubljana"))
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            df.setTimeZone(TimeZone.getTimeZone(timezone.getID()));
+            Date date = df.getCalendar().getTime();
+            String[] hour = date.toString().split(" ");
+            if(timezone.getID().equals("Europe/Ljubljana") && (hour[3].contains("9") ||
+                    hour[3].contains("10") || hour[3].contains("11")))
             {
                 return true;
             }
