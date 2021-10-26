@@ -1,10 +1,8 @@
 package com.example.fun7_test.domain.shared;
 
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.apache.http.HttpException;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Base64;
@@ -34,6 +32,20 @@ public class RestAPITools
 
             // make a request
             ResponseEntity<String> response = new RestTemplate().exchange(url, HttpMethod.GET, request, String.class);
+
+            // Check response status code
+            if(response.getStatusCode() == HttpStatus.BAD_REQUEST)
+            {
+                throw new HttpException("Remote server returned a bad request");
+            }
+            else if (response.getStatusCode() == HttpStatus.UNAUTHORIZED)
+            {
+                throw new HttpException("Remote server returned an unauthorized");
+            }
+            else if(response.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR)
+            {
+                throw new HttpException("Remote server returned an internal server error");
+            }
 
             // get JSON response
             String json = response.getBody();
