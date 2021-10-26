@@ -26,8 +26,6 @@ public class utils
 
     public boolean CheckUserSupport(String timezone) throws Exception
     {
-
-        boolean isSupportActivated;
         if(timezone.isEmpty())
         {
             return false;

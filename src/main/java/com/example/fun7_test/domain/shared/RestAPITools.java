@@ -55,7 +55,7 @@ public class RestAPITools
             }
             else if(json.equals("{\"ads\": \"sure, why not!\"}"))
             {
-
+                adsResult = true;
             }
 
         }
