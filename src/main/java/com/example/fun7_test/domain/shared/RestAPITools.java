@@ -1,9 +1,13 @@
 package com.example.fun7_test.domain.shared;
 
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Base64;
 
 public class RestAPITools
 {
@@ -11,23 +15,41 @@ public class RestAPITools
 
     public boolean SendRequest(String cc)
     {
+        boolean adsResult = false;
         try
         {
-            String url = "https://us-central1-o7tools.cloudfunctions.net/fun7-ad-partner";
-            RestTemplate restTemplate = new RestTemplate();
+            // request url
+            String url = "https://us-central1-o7tools.cloudfunctions.net/fun7-ad-partner?countryCode=" + cc;
 
-            // set the headers
+            // create auth credentials
+            String authStr = "fun7user:fun7pass";
+            String base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
+
+            // create headers
             HttpHeaders headers = new HttpHeaders();
-            headers.setBasicAuth("fun7user", "fun7user");
+            headers.add("Authorization", "Basic " + base64Creds);
 
-            HttpEntity entity = new HttpEntity(headers);
+            // create request
+            HttpEntity request = new HttpEntity(headers);
 
-            // send the GET request
-            HttpEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class, cc);
+            // make a request
+            ResponseEntity<String> response = new RestTemplate().exchange(url, HttpMethod.GET, request, String.class);
+
+            // get JSON response
+            String json = response.getBody();
+            if(json.equals("{\"ads\": \"you shall not pass!\"}"))
+            {
+                adsResult = false;
+            }
+            else if(json.equals("{\"ads\": \"sure, why not!\"}"))
+            {
+
+            }
+
         }
         catch (Exception e)
         {
         }
-        return true;
+        return adsResult;
     }
 }

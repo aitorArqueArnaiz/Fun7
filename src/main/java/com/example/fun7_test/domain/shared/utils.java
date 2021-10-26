@@ -4,11 +4,11 @@ import com.example.fun7_test.infrastructure.UserRepository;
 
 public class utils
 {
-    public boolean CheckMultiplyer(String userId) throws Exception
+    public boolean CheckMultiplyer(String userId, String cc) throws Exception
     {
 
         boolean isMultiplayerActivated;
-        if(userId.isEmpty())
+        if(userId.isEmpty() || cc.isEmpty() || !cc.equals("US"))
         {
             return false;
         }
@@ -24,24 +24,28 @@ public class utils
         return isMultiplayerActivated;
     }
 
-    public boolean CheckUserSupport(String userId) throws Exception
+    public boolean CheckUserSupport(String timezone) throws Exception
     {
 
         boolean isSupportActivated;
-        if(userId.isEmpty())
+        if(timezone.isEmpty())
         {
             return false;
         }
         try
         {
-            UserRepository userRepository = new UserRepository();
-            isSupportActivated = userRepository.Get(userId).support;
+            if(timezone.equals("9:00 - 15:00 Ljubljana time"))
+            {
+                return true;
+            }
+
+            // Update user support field into data base
         }
         catch (Exception error)
         {
             throw new Exception("Error during check the support feature. Error message : " +  error.getMessage());
         }
-        return isSupportActivated;
+        return false;
     }
 
     public boolean CheckADS(String cc) throws Exception

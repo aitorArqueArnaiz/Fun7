@@ -18,7 +18,7 @@ public class UsersResource
     @Produces("application/json")
     public String check(@PathParam("userId")String userId, @PathParam("timezone")String timezone, @PathParam("cc")String cc) throws Exception {
         JSONObject userServices = new JSONObject();
-        userServices.put("multiplayer", ut.CheckMultiplyer(userId));
+        userServices.put("multiplayer", ut.CheckMultiplyer(userId, cc));
         userServices.put("user-support", ut.CheckUserSupport(userId));
         userServices.put("ads", ut.CheckADS(cc));
         return userServices.toString();
