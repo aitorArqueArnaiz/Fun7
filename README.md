@@ -26,7 +26,19 @@ Steps to RUN the application (tested with Windows 10) :
 
     - Pre - Requirements
         1. JAVA JDK corretto-1.8.0_312 in your system
-        2. JAVa Runtime installed
+        2. JAVA Runtime installed
         3. GlassFish 4.1.1 (link : https://download.oracle.com/glassfish/4.1.1)
         4. Compile and Run the application
-        5. Call the endpoints with the following culr commands :
+        5. Call the endpoints with curl, navigator, postman , ... your choice !
+
+Rest API calls for multiplayer :
+
+Not implemented :
+
+How to NOT implement it :
+ - Global variables
+ - Data base persistence
+
+how I would implement it :
+    - Using Google Cloud equivalent like AWS dynamo Data Base in RAM memory (or also a Redis maybe)
+      That way the number of api calls could be saved in cloud and check would be efficient.

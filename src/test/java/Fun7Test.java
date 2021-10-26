@@ -1,4 +1,5 @@
 import com.example.fun7_test.domain.entities.User;
+import com.example.fun7_test.domain.services.AdminResourceGetUsers;
 import com.example.fun7_test.infrastructure.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,6 +8,8 @@ import java.util.List;
 
 public class Fun7Test
 {
+    // ---------------------- UNIT TESTS ---------------------------------------------------------------
+    // The tests attacks against real local Data Base (no mock)
     @Test
     public void AddUser_Test() throws Exception
     {
@@ -60,5 +63,20 @@ public class Fun7Test
 
         // Assert
         Assert.assertTrue(result);
+    }
+
+    // ---------------------- INTEGRATION TESTS ---------------------------------------------------------------
+    @Test
+    public void ListAllUsers_IntegrationTest() throws Exception
+    {
+        // Arrange
+        AdminResourceGetUsers allUsers = new AdminResourceGetUsers();
+
+        // Act
+        String users = allUsers.admin();
+
+        // Assert
+        Assert.assertNotNull(users);
+        Assert.assertTrue(users.length() > 0);
     }
 }
