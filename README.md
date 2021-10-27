@@ -28,6 +28,7 @@ Steps to RUN the application (tested with Windows 10) :
         1. JAVA JDK corretto-1.8.0_312 in your system
         2. JAVA Runtime installed
         3. GlassFish 4.1.1 (link : https://download.oracle.com/glassfish/4.1.1)
+        4. Import the users data base into mySQl local DB (db folder in solution)
         4. Compile and Run the application
         5. Call the endpoints with curl, navigator, postman , ... your choice !
 
