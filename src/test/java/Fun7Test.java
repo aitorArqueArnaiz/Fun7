@@ -1,9 +1,9 @@
 import com.example.fun7_test.domain.entities.User;
 import com.example.fun7_test.domain.services.AdminResourceGetUsers;
+import com.example.fun7_test.domain.shared.utils;
 import com.example.fun7_test.infrastructure.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.List;
 
 public class Fun7Test
@@ -63,6 +63,38 @@ public class Fun7Test
 
         // Assert
         Assert.assertTrue(result);
+    }
+
+    @Test
+    public void CheckUserMultiplayer_Feature_Deactivated_Test() throws Exception
+    {
+        // Arrange
+        User user = new User();
+        user.id = 6;
+        user.cc = "ES";
+        utils check = new utils();
+
+        // Act
+        boolean multiplayerActivated = check.CheckMultiplyer(String.valueOf(user.id), user.cc);
+
+        // Assert
+        Assert.assertFalse(multiplayerActivated);
+    }
+
+    @Test
+    public void CheckUserMultiplayer_Feature_Activated_Test() throws Exception
+    {
+        // Arrange
+        User user = new User();
+        user.id = 6;
+        user.cc = "US";
+        utils check = new utils();
+
+        // Act
+        boolean multiplayerActivated = check.CheckMultiplyer(String.valueOf(user.id), user.cc);
+
+        // Assert
+        Assert.assertTrue(multiplayerActivated);
     }
 
     // ---------------------- INTEGRATION TESTS ---------------------------------------------------------------
